@@ -11,7 +11,7 @@ This project contains a relational database schema for a simple e-commerce web s
 
 - [Tables Structure](schema/tables_structure.sql) : SQL script to create all tables with constraints and relationships
 - [Sample Data](schema/sample_data.sql) : Sample data (100+ rows) to populate the tables
-- [Queries](queries/) : Useful analytics and business queries
+- [Queries](reporting_queries/) : Useful analytics and business queries
 
 ## 📊 ER Diagram
 
