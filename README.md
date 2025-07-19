@@ -101,6 +101,78 @@ on p.product_author = joinTable.p_author
     and p.category_id = joinTable.c_id 
 where p.product_id != joinTable.p_id ;
 ```
+
+### 7. trigger to Create a sale history [Above customer, product], when a new order is made in the "Orders" table
+```sql
+-- first: we create sales_history table
+create table Sale_History(
+orderId int not null,
+CustId int not null,
+CustName varchar(22) not null,
+ProductName varchar(20) not null,
+total_amount decimal(10,2),
+quantity int,
+order_date date,
+Foreign key (CustId) references customer(customer_id),
+Foreign key (orderId) references orders(order_id) )
+
+-- second: trigger code
+create trigger saleHistoryTrigger
+on orders
+after insert
+as
+	insert into Sale_History(orderId, CustId, CustName, ProductName, total_amount, quantity, order_date)
+	select 
+		i.order_id,
+		c.customer_id,
+		c.first_name ,
+		p.product_name,
+		od.quantity * od.unit_price as total_amount
+		, od.quantity, i.order_date
+	from inserted i
+	join Customer c on i.customer_id = c.customer_id
+	join ORDER_DETAILS od on od.order_id = i.order_id
+	join PRODUCT p on p.product_id = od.product_id
+```
+
+### 8. transaction query to lock field 'quantity' from being updated .
+```sql
+BEGIN TRANSACTION
+    SELECT stock_quantity
+    FROM product WITH (UPDLOCK)
+    WHERE product_id = 211
+
+-- also we can create trigger to prevent this field from being updated
+-- cause in previous query the lock is on the entire row not the field only
+
+create trigger quantityTrigger
+on product 
+instead of update
+as
+begin
+	if update(stock_quantity)
+	Begin
+		if exists (select 1 from inserted i where product_id = 211)
+		begin
+			raiserror('this field is locked',16,1);
+			return;
+		end
+
+		update p
+		set p.stock_quantity = i.stock_quantity
+		from inserted i join product p
+		on p.product_id = i.product_id
+	End
+end
+```
+
+### 9- transaction query to lock row with id=211 from being updated
+```sql
+begin transaction
+	select *
+	from PRODUCT with(UPDLOCK, ROWLOCK)
+	where product_id = 211
+```
 ---
 ## 👨‍💻 Technologies
 - SQL Server 
