@@ -201,7 +201,7 @@ begin
 end
 ```
 
-### 9- transaction query to lock row with id=211 from being updated
+### 9. transaction query to lock row with id=211 from being updated
 ```sql
 begin transaction
 	select *
