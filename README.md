@@ -6,20 +6,33 @@ This project contains a relational database schema for a simple e-commerce web s
 - Customer and Orders structure
 - Sample data for testing
 - Useful reporting queries
+  
 ---
+
+## 🚀 Setup
+1. Install SQL Server (2019 or later) or any compatible RDBMS.
+2. Run the [Tables Structure](schema/tables_structure.sql) script to create the database schema.
+3. Populate the database with [Sample Data](schema/sample_data.sql).
+4. Explore the [Reporting Queries](reporting_queries/reporting_queries.sql) for analytics.
+
+---
+
 ## 📂 Structure
 
 - [Tables Structure](schema/tables_structure.sql) : SQL script to create all tables with constraints and relationships
 - [Sample Data](schema/sample_data.sql) : Sample data (100+ rows) to populate the tables
 - [Queries](reporting_queries/) : Useful analytics and business queries
+  
 ---
+
 ## 📊 ER Diagram
 
-![Conceptual Data Model](diagrams/ERD.png)
+![Conceptual Data Model](diagrams/ERD.png) : High-level view of the database structure
 
-![Conceptual Data Model](diagrams/schema.png)
+![Conceptual Data Model](diagrams/schema.png) : Detailed schema with relationships and constraints
 
 ---
+
 ## 💡 Reporting Queries
 
 ### 1. total revenue for a specific date :
@@ -66,7 +79,7 @@ GROUP BY c.customer_id, c.first_name, c.last_name
 having sum(odetails.quantity * odetails.unit_price) > 500
 ```
 
-### 4. denormalization table .
+### 4. Create Denormalized Order Table .
 ```sql
 create table denormalized_order(
 order_id int primary key,
@@ -209,6 +222,8 @@ begin transaction
 	where product_id = 211
 ```
 ---
+
 ## 👨‍💻 Technologies
-- SQL Server 
+- SQL Server (2019 or later)
 - SQL
+- Tools: SQL Server Management Studio (SSMS) 
