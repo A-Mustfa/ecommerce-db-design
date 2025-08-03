@@ -78,7 +78,7 @@ INCLUDE (quantity, unit_price);
 
 | Metric                | Before Index | After Index | Improvement |
 | --------------------- | -----------: | ----------: | ----------: |
-| ORDER_DETAILS Reads   | 21,405       | 16,926      | **-20%**    |
+| ORDER_DETAILS Reads   | 21,405       | 16,926      | **+20%**    |
 | CPU Time (ms)         | 1,219        | 1,296       | Slight ↑ (overhead for index maintenance) |
 | Elapsed Time (ms)     | 645          | 332         | **~48% faster** |
 
