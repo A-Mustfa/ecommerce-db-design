@@ -43,7 +43,7 @@ SQL Server had to scan the entire `product` table, which became very costly as d
 
 ## 📊 Execution Plan (Before)
 
-![[case-1-before.png]]
+![case 1 Execution plan bafore](../screenshots/case-1-before.png)
 
 ---
 
@@ -93,7 +93,7 @@ INCLUDE (category_name);
 
 ## 📊 Execution Plan (After)
 
-![[case-1-after.png]]
+![case 1 Execution plan after](../screenshots/case-1-after.png)
 
 ---
 
