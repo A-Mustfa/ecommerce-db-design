@@ -34,7 +34,7 @@ ORDER BY o.order_date DESC;
 
 ## 📊 Execution Plan (Before)
 
-![[case-3-before.png]]
+![case 3 Execution plan bafore](../screenshots/case-3-before.png)
 
 
 ---
@@ -68,7 +68,7 @@ INCLUDE (order_id, customer_id);
 
 ## 📊 Execution Plan (after)
 
-![[case-3-after.png]]
+![case 3 Execution plan after](../screenshots/case-3-after.png)
 
 ---
 ## 📈 Comparison Table
