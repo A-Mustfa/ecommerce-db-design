@@ -101,9 +101,9 @@ INCLUDE (category_name);
 
 |Metric|Before Index|After Index|Improvement|
 |---|--:|--:|--:|
-|Logical Reads|5,103|878|**-82%**|
+|Logical Reads|5,103|878|**+82%**|
 |CPU Time (ms)|16|94|Slight ↑|
-|Elapsed Time (ms)|35,148 (35 sec)|150 (0.15 sec)|**-99.5%**|
+|Elapsed Time (ms)|35,148 (35 sec)|150 (0.15 sec)|**+99.5%**|
 
 ---
 
