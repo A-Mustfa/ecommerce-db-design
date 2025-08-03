@@ -43,7 +43,7 @@ ORDER BY [Total Spending] DESC;
 ---
 ## 📊 Execution Plan (Before)
 
-![[Study/MentorShip/Untitled/performance_tuning/screenshots/case-2-before.png]]
+![case 2 Execution plan bafore](../screenshots/case-2-before.png)
 
 ---
 
@@ -83,7 +83,7 @@ INCLUDE (total_amount);
 
 ## 📊 Execution Plan (after)
 
-![[case-2-before 1.png]]
+![case 2 Execution plan after](../screenshots/case-2-after.png)
 
 ---
 
