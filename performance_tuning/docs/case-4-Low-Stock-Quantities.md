@@ -28,7 +28,7 @@ WHERE stock_quantity < 10;
 
 ## 📊 Execution Plan (Before)
 
-![[case-4-before.png]]
+![case 4 Execution plan bafore](../screenshots/case-4-before.png)
 
 ---
 
@@ -59,7 +59,7 @@ INCLUDE (product_name);
 
 ## 📊 Execution Plan (after)
 
-![[case-4-after.png]]
+![case 4 Execution plan after](../screenshots/case-4-after.png)
 
 ---
 
