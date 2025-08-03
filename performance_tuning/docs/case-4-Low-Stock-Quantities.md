@@ -19,29 +19,33 @@ WHERE stock_quantity < 10;
 **Query Stats:**
 
 * **PRODUCT Table**
-  * Logical Reads: **4,860**
+  * Logical Reads: 4,860
+  * Physical Reads: 4,653
 * **Execution Time**
-  * CPU time: **31 ms**
-  * Elapsed time: **147 ms**
+  * **CPU time:** 156 ms
+  * **Elapsed time:** 41,395 ms ❌ (very slow)
 
 ---
 
 ## 📊 Execution Plan (Before)
 
-![case 4 Execution plan bafore](../screenshots/case-4-before.png)
+![case 4 execution plan before](../screenshots/case-4-before.png)
 
 ---
-
 ## 🔧 Optimization Applied
 
-✅ **Added a non-clustered index** on `stock_quantity`  
-✅ **Included `product_name`** in the index so SQL Server can retrieve it **without key lookups**
+✅ **Created a Filtered Index:**
 
 ```sql
-CREATE INDEX IX_Product_StockQuantity
+CREATE INDEX IX_Product_StockQuantity_Low
 ON product (stock_quantity)
-INCLUDE (product_name);
+INCLUDE (product_name)
+WHERE stock_quantity < 10;
 ```
+
+📌 **Why Filtered Index?**
+* Only stores **products with stock < 10** → much smaller index.
+* Makes this query **super fast** since only a small subset of rows is scanned.
 
 ---
 
@@ -50,36 +54,35 @@ INCLUDE (product_name);
 **Query Stats:**
 
 * **PRODUCT Table**
-  * Logical Reads: **38** (↓ from 4,860)
+  * Logical Reads: 39 (⬇ from 4,860)
+  * Physical Reads: 0 (⬇ from 4,653)
 * **Execution Time**
-  * CPU time: **47 ms**
-  * Elapsed time: **295 ms**
+  * **CPU time:** 0 ms
+  * **Elapsed time:** 241 ms ✅
 
 ---
 
 ## 📊 Execution Plan (after)
 
-![case 4 Execution plan after](../screenshots/case-4-after.png)
+
+![case 4 execution plan after](../screenshots/case-4-after.png)
 
 ---
 
 ## 📈 Comparison Table
 
-| Metric            | Before Index | After Index |                             Improvement |
-| ----------------- | -----------: | ----------: | --------------------------------------: |
-| Logical Reads     |        4,860 |          38 |                               **-99%**✅ |
-| CPU Time (ms)     |           31 |          47 |                           Slight change |
-| Elapsed Time (ms) |          147 |         295 | Slightly higher (first run after index) |
+| Metric           | Before   | After   | Improvement |
+| ---------------- | -------: | ------: | ----------: |
+| Logical Reads    | 4,860    | 39      | **-99%**    |
+| Physical Reads   | 4,653    | 0       | **-100%**   |
+| CPU Time (ms)    | 156      | 0       | **-100%**   |
+| Elapsed Time (ms)| 41,395   | 241     | **-99.4%**  |
 
 ---
 
 ## 💡 What I Learned
 
-* ✅ **Indexing on `stock_quantity`** turned a full table scan into a **targeted index seek**.
-* ✅ **Including `product_name`** eliminated extra key lookups, so SQL Server didn’t need to go back to the table.
-* 📉 Logical Reads dropped **from 4,860 → 38** (≈ 99% improvement).
-* ℹ️ Elapsed time was slightly higher because this was the **first query run after index creation** — would typically stabilize and get faster with caching.
-
----
-
-✅ This case shows how **a simple covering index** can dramatically reduce the work SQL Server needs to do for a basic filter query.
+* ✅ **Filtered indexes** are perfect for **queries targeting a small subset** of rows.
+* ✅ Reduced **IO cost** drastically (from thousands of reads to under 50).
+* ✅ **Query execution went from 41 seconds → under a second!**
+* 🔜 In future, similar **targeted queries** can also benefit from filtered indexes.
