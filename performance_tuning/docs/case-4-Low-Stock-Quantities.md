@@ -73,10 +73,10 @@ WHERE stock_quantity < 10;
 
 | Metric           | Before   | After   | Improvement |
 | ---------------- | -------: | ------: | ----------: |
-| Logical Reads    | 4,860    | 39      | **-99%**    |
-| Physical Reads   | 4,653    | 0       | **-100%**   |
-| CPU Time (ms)    | 156      | 0       | **-100%**   |
-| Elapsed Time (ms)| 41,395   | 241     | **-99.4%**  |
+| Logical Reads    | 4,860    | 39      | **+99%**    |
+| Physical Reads   | 4,653    | 0       | **+100%**   |
+| CPU Time (ms)    | 156      | 0       | **+100%**   |
+| Elapsed Time (ms)| 41,395   | 241     | **+99.4%**  |
 
 ---
 
