@@ -66,7 +66,7 @@ INCLUDE (total_amount);
 
 - **ORDERS Table**
     
-    - Logical Reads: 4,539 (-25%)
+    - Logical Reads: 4,539 (+25%)
         
 - **CUSTOMER Table**
     
@@ -74,9 +74,9 @@ INCLUDE (total_amount);
         
 - **Execution Time**
     
-    - CPU Time: 704 ms (-25%)
+    - CPU Time: 704 ms (+25%)
         
-    - Elapsed Time: 265 ms (-18%)
+    - Elapsed Time: 265 ms (+18%)
         
 
 ---
@@ -91,16 +91,16 @@ INCLUDE (total_amount);
 
 |Metric|Before Index|After Index|Improvement|
 |---|--:|--:|--:|
-|ORDERS Logical Reads|6,041|4,539|**-25%**|
+|ORDERS Logical Reads|6,041|4,539|**+25%**|
 |CUSTOMER Logical Reads|4,270|4,270|0%|
-|CPU Time (ms)|940|704|**-25%**|
-|Elapsed Time (ms)|324|265|**-18%**|
+|CPU Time (ms)|940|704|**+25%**|
+|Elapsed Time (ms)|324|265|**+18%**|
 
 ---
 
 ## 💡 What I Learned
 
-- ✅ **Indexing reduced reads** on `orders` and improved performance (Logical Reads -25%).
+- ✅ **Indexing reduced reads** on `orders` and improved performance (Logical Reads +25%).
     
 - ✅ **Execution time improved** from 324 ms → 265 ms (~18%).
     
