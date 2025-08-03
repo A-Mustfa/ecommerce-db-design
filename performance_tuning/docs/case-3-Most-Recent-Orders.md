@@ -75,10 +75,10 @@ INCLUDE (order_id, customer_id);
 
 | Metric                 | Before Index | After Index | Improvement   |
 | ---------------------- | -----------: | ----------: | ------------: |
-| ORDERS Logical Reads   |        6,041 |          8  |   **-99%** 🚀 |
-| CUSTOMER Logical Reads |       10,551 |      5,414  |   **-49%**    |
-| CPU Time (ms)          |        1,283 |          0  |   **-100%**   |
-| Elapsed Time (ms)      |          839 |        256  |   **-69%**    |
+| ORDERS Logical Reads   |        6,041 |          8  |   **+99%** 🚀 |
+| CUSTOMER Logical Reads |       10,551 |      5,414  |   **+49%**    |
+| CPU Time (ms)          |        1,283 |          0  |   **+100%**   |
+| Elapsed Time (ms)      |          839 |        256  |   **+69%**    |
 
 ---
 
