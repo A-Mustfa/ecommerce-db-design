@@ -82,6 +82,7 @@ This section contains scripts and strategies to optimize query performance and d
 - [Case 2 – Find the Top Customers by Total Spending](performance_tuning/docs/case-2-top-spending-customers.md)
 - [Case 3 – Retrieve the Most Recent Orders with Customer Info](performance_tuning/docs/case-3-Most-Recent-Orders.md)
 - [Case 4 – List Products That Have Low Stock Quantities](performance_tuning/docs/case-4-Low-Stock-Quantities.md)
+- [Case 5 – revenue by category](performance_tuning/docs/case-5-revenue-by-category.md)
 
 ---
 
